@@ -10,6 +10,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Helllo!");   //Вывод текста на экран
+            Console.ReadKey();
         }
     }
 }
