@@ -18,7 +18,7 @@ namespace ConsoleApp1
                     numbers.RemoveAt(i);
                 }
             }
-            Console.WriteLine("Список после удаления:");
+            Console.WriteLine("Список после удалений:");
             foreach (var number in numbers)
             {
                 Console.WriteLine(number);
