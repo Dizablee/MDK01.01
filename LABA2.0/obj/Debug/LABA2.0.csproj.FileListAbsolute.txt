@@ -1,8 +1,0 @@
-D:\П-30\LABA2.0\obj\Debug\LABA2.0.csproj.AssemblyReference.cache
-D:\П-30\LABA2.0\obj\Debug\LABA2.0.csproj.SuggestedBindingRedirects.cache
-D:\П-30\LABA2.0\obj\Debug\LABA2.0.csproj.CoreCompileInputs.cache
-D:\П-30\LABA2.0\bin\Debug\LABA2.0.exe.config
-D:\П-30\LABA2.0\bin\Debug\LABA2.0.exe
-D:\П-30\LABA2.0\bin\Debug\LABA2.0.pdb
-D:\П-30\LABA2.0\obj\Debug\LABA2.0.exe
-D:\П-30\LABA2.0\obj\Debug\LABA2.0.pdb
