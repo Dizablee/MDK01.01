@@ -11,3 +11,6 @@ C:\Users\st50.TPK\Source\Repos\Dizablee\ConsoleApp1\LABA2.0\obj\Debug\LABA2.0.cs
 C:\Users\st50.TPK\Source\Repos\Dizablee\ConsoleApp1\LABA2.0\obj\Debug\LABA2.0.csproj.CoreCompileInputs.cache
 C:\Users\st50.TPK\Source\Repos\Dizablee\ConsoleApp1\LABA2.0\obj\Debug\LABA2.0.exe
 C:\Users\st50.TPK\Source\Repos\Dizablee\ConsoleApp1\LABA2.0\obj\Debug\LABA2.0.pdb
+C:\Users\st50.TPK\Source\Repos\Dizablee\ConsoleApp1\LABA2.0\bin\Debug\LABA2.0.exe.config
+C:\Users\st50.TPK\Source\Repos\Dizablee\ConsoleApp1\LABA2.0\bin\Debug\LABA2.0.exe
+C:\Users\st50.TPK\Source\Repos\Dizablee\ConsoleApp1\LABA2.0\bin\Debug\LABA2.0.pdb
