@@ -5,34 +5,32 @@ namespace LABA2._0
 {
     public class SalesHistory
     {
-        private Dictionary<Genre, (int totalSales, decimal totalRevenue)> salesReport;
+        private Dictionary<Game, (int totalSales, decimal totalRevenue)> salesReport;
 
         public SalesHistory()
         {
-            salesReport = new Dictionary<Genre, (int totalSales, decimal totalRevenue)>();
-            foreach (var genre in Enum.GetValues(typeof(Genre)))
-            {
-                salesReport[(Genre)genre] = (0, 0);
-            }
+            salesReport = new Dictionary<Game, (int totalSales, decimal totalRevenue)>();
         }
 
         public void RecordSale(Game game, int salesCount)
         {
-            var genre = game.GetGenre();
-            var price = game.GetPrice();
+            if (!salesReport.ContainsKey(game))
+            {
+                salesReport[game] = (0, 0);
+            }
 
-            var currentSalesData = salesReport[genre];
+            var currentSalesData = salesReport[game];
             currentSalesData.totalSales += salesCount;
-            currentSalesData.totalRevenue += salesCount * price;
+            currentSalesData.totalRevenue += salesCount * game.GetPrice();
 
-            salesReport[genre] = currentSalesData;
+            salesReport[game] = currentSalesData;
         }
 
         public void PrintSalesReport()
         {
             foreach (var report in salesReport)
             {
-                Console.WriteLine($"Жанр: {report.Key}");
+                Console.WriteLine($"Игра: {report.Key.GetName()} (Жанр: {report.Key.GetGenre()})");
                 Console.WriteLine($"Общее количество продаж: {report.Value.totalSales}");
                 Console.WriteLine($"Общая выручка: {report.Value.totalRevenue}");
                 Console.WriteLine();
