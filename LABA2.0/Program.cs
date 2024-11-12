@@ -12,13 +12,13 @@ namespace LABA2._0
             static void Main(string[] args)
             {
                 List<Game> games = new List<Game>()
-            {
-                new Game("Grand Theft Auto 5", Genre.Action, 1500),
-                new Game("Skyrim", Genre.RPG, 690),
-                new Game("Frostpunk 2", Genre.Strategy, 340),
-                new Game("Outlast 2", Genre.Horror, 2000),
-                new Game("FIFA 12", Genre.Sport, 210),
-            };
+                {
+                    new Game("Grand Theft Auto 5", Genre.Action, 1500),
+                    new Game("Skyrim", Genre.RPG, 690),
+                    new Game("Frostpunk 2", Genre.Strategy, 340),
+                    new Game("Outlast 2", Genre.Horror, 2000),
+                    new Game("FIFA 12", Genre.Sport, 210),
+                };
 
                 SalesHistory salesHistory = new SalesHistory();
 
