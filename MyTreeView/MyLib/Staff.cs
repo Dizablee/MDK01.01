@@ -12,13 +12,16 @@ namespace MyLib
         public string Surname { get; set; }
         public string Age { get; set; }
         public DateTime DateBirth { get; set; }
+        public string Profession { get; set; }
+        public string Site { get; set; }
 
         public static Dictionary<string, string> Aliases = new Dictionary<string, string>()
         {
             { nameof(Name), "Имя"},
             { nameof(Surname), "Фамилия"},
             { nameof(Age), "Возраст"},
-            {nameof(DateBirth), "Дата рождения" }
+            {nameof(DateBirth), "Дата рождения" },
+             {nameof(Profession), "Профессия" }
 
         };
     }

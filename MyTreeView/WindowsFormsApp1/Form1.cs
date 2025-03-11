@@ -22,7 +22,27 @@ namespace WindowsFormsApp1
             treeData_ = new List<TreeNodeModel>();
 
             staffModel_ = new StaffModel();
+            MyTreeView.AfterSelect += MyTreeView_AfterSelect;
         }
+
+        private void MyTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+            if (e.Node.Text != "Кандидаты") return;              
+            string profession = e.Node.Parent.Parent.Text;
+            string site = e.Node.Parent.Text;
+            MessageBox.Show($"Выбраны: Профессия = {profession}, Сайт = {site}");
+            var staffByProfessionAndSite = staffModel_.GetStaffByProfessionAndSite(profession, site);
+            MessageBox.Show($"Найдено сотрудников: {staffByProfessionAndSite.Count}");
+            if (staffByProfessionAndSite.Count == 0)
+            {
+                MessageBox.Show($"Нет кандидатов для профессии '{profession}' на сайте '{site}'");
+            }
+            Table.DataSource = null;
+            Table.DataSource = staffByProfessionAndSite;
+            Table.Refresh();
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
