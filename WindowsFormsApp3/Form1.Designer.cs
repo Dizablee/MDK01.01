@@ -60,6 +60,7 @@
             this.dgvSales.Name = "dgvSales";
             this.dgvSales.Size = new System.Drawing.Size(354, 206);
             this.dgvSales.TabIndex = 1;
+            this.dgvSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSales_CellContentClick);
             // 
             // btnLoadProducts
             // 

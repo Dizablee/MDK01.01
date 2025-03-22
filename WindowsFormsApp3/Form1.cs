@@ -87,5 +87,10 @@ namespace WindowsFormsApp3
                 MessageBox.Show("Отчет сохранен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void dgvSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

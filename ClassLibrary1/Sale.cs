@@ -11,6 +11,6 @@ namespace ClassLibrary1
         public string Brand { get; set; } //Марка телефона
         public string Model { get; set; } //Модель телефона
         public int Quantity { get; set; } // Кол. проданных едениц
-        public DateTime SaleDate { get; internal set; }
+        public DateTime SaleDate { get; set; }
     }
 }
