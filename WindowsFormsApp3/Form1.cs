@@ -58,17 +58,16 @@ namespace WindowsFormsApp3
 }
 
         private void btnShowStock_Click(object sender, EventArgs e)
+        
         {
-            var stock = store.Products.Select(p => new
-            {
-                p.Brand,
-                p.Model,
-                p.Price,
-                Sold = store.Sales.Where(s => s.Model == p.Model).Sum(s => s.Quantity)
-            }).ToList();
-
-            dgvProducts.DataSource = stock;
-        }
+            Form2 form2 = new Form2();
+            form2.Show();
+        
+        
+        
+        }  
+             
+        
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
