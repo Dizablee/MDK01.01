@@ -18,7 +18,7 @@ namespace WindowsFormsApp3
         public Form1()
         {
             InitializeComponent();
-            btnLoadSales.Click += btnLoadSales_Click;
+           
             btnGenerateReport.Click += btnGenerateReport_Click;
         }
 
@@ -27,40 +27,12 @@ namespace WindowsFormsApp3
 
         }
 
-        private void btnLoadProducts_Click(object sender, EventArgs e)
-        {
 
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "Text Files|*.txt" };
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    store.LoadProducts(openFileDialog.FileName);
-                    dgvProducts.DataSource = store.Products.ToList();
-                }
-            }
-        }
-
-        private void btnLoadSales_Click(object sender, EventArgs e)
-{
-            MessageBox.Show("Кнопка 'Загрузить продажи' нажата");
-            OpenFileDialog openFileDialog = new OpenFileDialog
-    {
-        Filter = "Text Files|*.txt",
-        Title = "Выберите файл продаж"
-    };
-
-    if (openFileDialog.ShowDialog() == DialogResult.OK)
-    {
-        store.LoadSales(openFileDialog.FileName);
-        dgvSales.DataSource = null;  // Сброс данных
-        dgvSales.DataSource = store.Sales.ToList();  // Обновленный список продаж
-    }
-}
 
         private void btnShowStock_Click(object sender, EventArgs e)
         
         {
-            Form2 form2 = new Form2();
+            Form2 form2 = new Form2(store);
             form2.Show();
         
         
@@ -90,6 +62,33 @@ namespace WindowsFormsApp3
         private void dgvSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void загрузитьСписокТоваровToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "Text Files|*.txt" };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                store.LoadProducts(openFileDialog.FileName);
+                dgvProducts.DataSource = store.Products.ToList();
+            }
+        }
+
+        private void загрузитьСписокПродажToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Кнопка 'Загрузить продажи' нажата");
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Text Files|*.txt",
+                Title = "Выберите файл продаж"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                store.LoadSales(openFileDialog.FileName);
+                dgvSales.DataSource = null;  // Сброс данных
+                dgvSales.DataSource = store.Sales.ToList();  // Обновленный список продаж
+            }
         }
     }
 }

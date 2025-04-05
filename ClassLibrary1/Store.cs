@@ -22,6 +22,20 @@ public class Store
             }
         }
     }
+    public List<ProductStock> CalculateStock()
+    {
+        var stock = Products.ToDictionary(p => p.Model, p => p.Quantity);
+
+        foreach (var sale in Sales)
+        {
+            if (stock.ContainsKey(sale.Model))
+            {
+                stock[sale.Model] = sale.Quantity;
+            }
+        }
+
+        return stock.Select(s => new ProductStock { Model = s.Key, RemainingQuantity = s.Value }).ToList();
+    }
 
     public void LoadSales(string filePath)
     {
@@ -33,7 +47,7 @@ public class Store
             {
                 Sales.Add(new Sale { Brand = parts[0], Model = parts[1], SaleDate = date, Quantity = quantity });
             }
-            
+
         }
     }
 
@@ -41,4 +55,4 @@ public class Store
     {
         return Sales.Where(s => s.SaleDate >= start && s.SaleDate <= end).ToList();
     }
-}
+}  

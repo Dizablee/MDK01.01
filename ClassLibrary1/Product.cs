@@ -12,5 +12,6 @@ namespace ClassLibrary1
         public string Model { get; set; } //Модель телефона
         public decimal Price { get; set; } //Цена
         public string Category { get; set; } //Товарная группа
+        public int Quantity { get; set; }
     }
 }

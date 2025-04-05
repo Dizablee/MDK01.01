@@ -30,8 +30,6 @@
         {
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.dgvSales = new System.Windows.Forms.DataGridView();
-            this.btnLoadProducts = new System.Windows.Forms.Button();
-            this.btnLoadSales = new System.Windows.Forms.Button();
             this.btnShowStock = new System.Windows.Forms.Button();
             this.btnGenerateReport = new System.Windows.Forms.Button();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
@@ -40,14 +38,19 @@
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblProducts = new System.Windows.Forms.Label();
             this.lblSales = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьСписокТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьСписокПродажToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProducts
             // 
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(13, 30);
+            this.dgvProducts.Location = new System.Drawing.Point(8, 96);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.Size = new System.Drawing.Size(342, 206);
             this.dgvProducts.TabIndex = 0;
@@ -56,34 +59,15 @@
             // 
             this.dgvSales.AllowUserToOrderColumns = true;
             this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSales.Location = new System.Drawing.Point(372, 30);
+            this.dgvSales.Location = new System.Drawing.Point(375, 96);
             this.dgvSales.Name = "dgvSales";
             this.dgvSales.Size = new System.Drawing.Size(354, 206);
             this.dgvSales.TabIndex = 1;
             this.dgvSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSales_CellContentClick);
             // 
-            // btnLoadProducts
-            // 
-            this.btnLoadProducts.Location = new System.Drawing.Point(537, 256);
-            this.btnLoadProducts.Name = "btnLoadProducts";
-            this.btnLoadProducts.Size = new System.Drawing.Size(159, 39);
-            this.btnLoadProducts.TabIndex = 2;
-            this.btnLoadProducts.Text = "Загрузить список товаров";
-            this.btnLoadProducts.UseVisualStyleBackColor = true;
-            this.btnLoadProducts.Click += new System.EventHandler(this.btnLoadProducts_Click);
-            // 
-            // btnLoadSales
-            // 
-            this.btnLoadSales.Location = new System.Drawing.Point(251, 254);
-            this.btnLoadSales.Name = "btnLoadSales";
-            this.btnLoadSales.Size = new System.Drawing.Size(137, 40);
-            this.btnLoadSales.TabIndex = 3;
-            this.btnLoadSales.Text = "Загрузить список продаж";
-            this.btnLoadSales.UseVisualStyleBackColor = true;
-            // 
             // btnShowStock
             // 
-            this.btnShowStock.Location = new System.Drawing.Point(394, 256);
+            this.btnShowStock.Location = new System.Drawing.Point(553, 367);
             this.btnShowStock.Name = "btnShowStock";
             this.btnShowStock.Size = new System.Drawing.Size(137, 38);
             this.btnShowStock.TabIndex = 4;
@@ -93,7 +77,7 @@
             // 
             // btnGenerateReport
             // 
-            this.btnGenerateReport.Location = new System.Drawing.Point(45, 254);
+            this.btnGenerateReport.Location = new System.Drawing.Point(30, 367);
             this.btnGenerateReport.Name = "btnGenerateReport";
             this.btnGenerateReport.Size = new System.Drawing.Size(200, 40);
             this.btnGenerateReport.TabIndex = 5;
@@ -102,14 +86,14 @@
             // 
             // dtpStart
             // 
-            this.dtpStart.Location = new System.Drawing.Point(99, 322);
+            this.dtpStart.Location = new System.Drawing.Point(113, 341);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(200, 20);
             this.dtpStart.TabIndex = 6;
             // 
             // dtpEnd
             // 
-            this.dtpEnd.Location = new System.Drawing.Point(414, 322);
+            this.dtpEnd.Location = new System.Drawing.Point(417, 341);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(200, 20);
             this.dtpEnd.TabIndex = 7;
@@ -117,7 +101,7 @@
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(5, 329);
+            this.lblStartDate.Location = new System.Drawing.Point(5, 341);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(88, 13);
             this.lblStartDate.TabIndex = 8;
@@ -126,7 +110,7 @@
             // lblEndDate
             // 
             this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(319, 328);
+            this.lblEndDate.Location = new System.Drawing.Point(319, 341);
             this.lblEndDate.Name = "lblEndDate";
             this.lblEndDate.Size = new System.Drawing.Size(81, 13);
             this.lblEndDate.TabIndex = 9;
@@ -136,7 +120,7 @@
             // 
             this.lblProducts.AutoSize = true;
             this.lblProducts.Font = new System.Drawing.Font("Perpetua", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProducts.Location = new System.Drawing.Point(95, 3);
+            this.lblProducts.Location = new System.Drawing.Point(82, 59);
             this.lblProducts.Name = "lblProducts";
             this.lblProducts.Size = new System.Drawing.Size(157, 24);
             this.lblProducts.TabIndex = 10;
@@ -146,11 +130,44 @@
             // 
             this.lblSales.AutoSize = true;
             this.lblSales.Font = new System.Drawing.Font("Perpetua", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lblSales.Location = new System.Drawing.Point(480, 3);
+            this.lblSales.Location = new System.Drawing.Point(480, 59);
             this.lblSales.Name = "lblSales";
             this.lblSales.Size = new System.Drawing.Size(153, 24);
             this.lblSales.TabIndex = 11;
             this.lblSales.Text = "Список продаж";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(752, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.загрузитьСписокТоваровToolStripMenuItem,
+            this.загрузитьСписокПродажToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // загрузитьСписокТоваровToolStripMenuItem
+            // 
+            this.загрузитьСписокТоваровToolStripMenuItem.Name = "загрузитьСписокТоваровToolStripMenuItem";
+            this.загрузитьСписокТоваровToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.загрузитьСписокТоваровToolStripMenuItem.Text = "Загрузить список товаров";
+            this.загрузитьСписокТоваровToolStripMenuItem.Click += new System.EventHandler(this.загрузитьСписокТоваровToolStripMenuItem_Click);
+            // 
+            // загрузитьСписокПродажToolStripMenuItem
+            // 
+            this.загрузитьСписокПродажToolStripMenuItem.Name = "загрузитьСписокПродажToolStripMenuItem";
+            this.загрузитьСписокПродажToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.загрузитьСписокПродажToolStripMenuItem.Text = "Загрузить список продаж";
+            this.загрузитьСписокПродажToolStripMenuItem.Click += new System.EventHandler(this.загрузитьСписокПродажToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -165,15 +182,17 @@
             this.Controls.Add(this.dtpStart);
             this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.btnShowStock);
-            this.Controls.Add(this.btnLoadSales);
-            this.Controls.Add(this.btnLoadProducts);
             this.Controls.Add(this.dgvSales);
             this.Controls.Add(this.dgvProducts);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,8 +202,6 @@
 
         private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.DataGridView dgvSales;
-        private System.Windows.Forms.Button btnLoadProducts;
-        private System.Windows.Forms.Button btnLoadSales;
         private System.Windows.Forms.Button btnShowStock;
         private System.Windows.Forms.Button btnGenerateReport;
         private System.Windows.Forms.DateTimePicker dtpStart;
@@ -193,6 +210,10 @@
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblProducts;
         private System.Windows.Forms.Label lblSales;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьСписокТоваровToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьСписокПродажToolStripMenuItem;
     }
 }
 
