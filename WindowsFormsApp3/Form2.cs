@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibrary1;
 
 namespace WindowsFormsApp3
 {
@@ -35,11 +37,13 @@ namespace WindowsFormsApp3
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+             
                 using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                 {
-                    foreach (var product  in store.Products)
+                    foreach (var sale in store.Sales)
+                        
                     {
-                        writer.WriteLine($"{product.Brand};{product.Model};{ProductStock.RemainingQuantity}");
+                        writer.WriteLine($"{sale.Brand};{sale.Model};{sale.Quantity}");
                     }
                 }
                 MessageBox.Show("Остатки сохранены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);

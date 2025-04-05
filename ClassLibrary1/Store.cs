@@ -16,25 +16,38 @@ public class Store
         foreach (var line in File.ReadLines(filePath))
         {
             var parts = line.Split(';');
-            if (parts.Length == 4 && decimal.TryParse(parts[2], NumberStyles.Any, CultureInfo.InvariantCulture, out decimal price))
+            if (parts.Length == 5 && decimal.TryParse(parts[2], NumberStyles.Any, CultureInfo.InvariantCulture, out decimal price) && int.TryParse(parts[4], out int quantity))
             {
-                Products.Add(new Product { Brand = parts[0], Model = parts[1], Price = price, Category = parts[3] });
+                Products.Add(new Product { Brand = parts[0], Model = parts[1], Price = price, Category = parts[3], Quantity = quantity });
             }
         }
     }
     public List<ProductStock> CalculateStock()
     {
+        // Сначала создаём словарь с начальными остатками из товаров
         var stock = Products.ToDictionary(p => p.Model, p => p.Quantity);
 
+        // Затем вычитаем количество из продаж
         foreach (var sale in Sales)
         {
             if (stock.ContainsKey(sale.Model))
             {
-                stock[sale.Model] = sale.Quantity;
+                stock[sale.Model] -= sale.Quantity;
             }
         }
 
-        return stock.Select(s => new ProductStock { Model = s.Key, RemainingQuantity = s.Value }).ToList();
+        // Формируем итоговый список остатков
+        var result = from product in Products
+                     where stock.ContainsKey(product.Model)
+                     select new ProductStock
+                     {
+                         Brand = product.Brand,
+                         Model = product.Model,
+                         RemainingQuantity = stock[product.Model] < 0 ? 0 : stock[product.Model]
+                     };
+
+        return result.ToList();
+
     }
 
     public void LoadSales(string filePath)
