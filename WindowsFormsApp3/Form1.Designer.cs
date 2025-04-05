@@ -42,6 +42,8 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьСписокТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьСписокПродажToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.действиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьОстаткиНаСкладеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -67,17 +69,20 @@
             // 
             // btnShowStock
             // 
-            this.btnShowStock.Location = new System.Drawing.Point(553, 367);
+            this.btnShowStock.BackColor = System.Drawing.Color.White;
+            this.btnShowStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnShowStock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowStock.Location = new System.Drawing.Point(123, 2);
             this.btnShowStock.Name = "btnShowStock";
-            this.btnShowStock.Size = new System.Drawing.Size(137, 38);
+            this.btnShowStock.Size = new System.Drawing.Size(175, 22);
             this.btnShowStock.TabIndex = 4;
             this.btnShowStock.Text = "Показать остатки на складе";
-            this.btnShowStock.UseVisualStyleBackColor = true;
+            this.btnShowStock.UseVisualStyleBackColor = false;
             this.btnShowStock.Click += new System.EventHandler(this.btnShowStock_Click);
             // 
             // btnGenerateReport
             // 
-            this.btnGenerateReport.Location = new System.Drawing.Point(30, 367);
+            this.btnGenerateReport.Location = new System.Drawing.Point(800, 210);
             this.btnGenerateReport.Name = "btnGenerateReport";
             this.btnGenerateReport.Size = new System.Drawing.Size(200, 40);
             this.btnGenerateReport.TabIndex = 5;
@@ -86,14 +91,14 @@
             // 
             // dtpStart
             // 
-            this.dtpStart.Location = new System.Drawing.Point(113, 341);
+            this.dtpStart.Location = new System.Drawing.Point(836, 110);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(200, 20);
             this.dtpStart.TabIndex = 6;
             // 
             // dtpEnd
             // 
-            this.dtpEnd.Location = new System.Drawing.Point(417, 341);
+            this.dtpEnd.Location = new System.Drawing.Point(836, 163);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(200, 20);
             this.dtpEnd.TabIndex = 7;
@@ -101,7 +106,7 @@
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(5, 341);
+            this.lblStartDate.Location = new System.Drawing.Point(742, 116);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(88, 13);
             this.lblStartDate.TabIndex = 8;
@@ -110,7 +115,7 @@
             // lblEndDate
             // 
             this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(319, 341);
+            this.lblEndDate.Location = new System.Drawing.Point(742, 170);
             this.lblEndDate.Name = "lblEndDate";
             this.lblEndDate.Size = new System.Drawing.Size(81, 13);
             this.lblEndDate.TabIndex = 9;
@@ -139,10 +144,11 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.действиеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(752, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1053, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -169,11 +175,26 @@
             this.загрузитьСписокПродажToolStripMenuItem.Text = "Загрузить список продаж";
             this.загрузитьСписокПродажToolStripMenuItem.Click += new System.EventHandler(this.загрузитьСписокПродажToolStripMenuItem_Click);
             // 
+            // действиеToolStripMenuItem
+            // 
+            this.действиеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.показатьОстаткиНаСкладеToolStripMenuItem});
+            this.действиеToolStripMenuItem.Name = "действиеToolStripMenuItem";
+            this.действиеToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.действиеToolStripMenuItem.Text = "Действие";
+            // 
+            // показатьОстаткиНаСкладеToolStripMenuItem
+            // 
+            this.показатьОстаткиНаСкладеToolStripMenuItem.Name = "показатьОстаткиНаСкладеToolStripMenuItem";
+            this.показатьОстаткиНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.показатьОстаткиНаСкладеToolStripMenuItem.Text = "Показать остатки на складе";
+            this.показатьОстаткиНаСкладеToolStripMenuItem.Click += new System.EventHandler(this.показатьОстаткиНаСкладеToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 450);
+            this.ClientSize = new System.Drawing.Size(1053, 450);
             this.Controls.Add(this.lblSales);
             this.Controls.Add(this.lblProducts);
             this.Controls.Add(this.lblEndDate);
@@ -214,6 +235,8 @@
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem загрузитьСписокТоваровToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem загрузитьСписокПродажToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem действиеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem показатьОстаткиНаСкладеToolStripMenuItem;
     }
 }
 

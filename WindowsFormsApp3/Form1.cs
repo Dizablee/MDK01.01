@@ -90,5 +90,11 @@ namespace WindowsFormsApp3
                 dgvSales.DataSource = store.Sales.ToList();  // Обновленный список продаж
             }
         }
+
+        private void показатьОстаткиНаСкладеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(store);
+            form2.Show();
+        }
     }
 }
