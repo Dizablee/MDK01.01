@@ -14,12 +14,35 @@ namespace WindowsFormsApp3
 {
     public partial class Form1: Form
     {
+        
         private Store store = new Store();
+        private SalesFileValidator salesFileValidator = new SalesFileValidator();
+
+
         public Form1()
         {
             InitializeComponent();
            
             btnGenerateReport.Click += btnGenerateReport_Click;
+
+        }
+        private void DgvProducts_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            if (grid.Rows[e.RowIndex].DataBoundItem is ParsedLine line && !line.IsValid)
+            {
+                grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
+                grid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+            }
+        }
+        private void DgvSales_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            if (grid.Rows[e.RowIndex].DataBoundItem is ParsedLine line && !line.IsValid)
+            {
+                grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
+                grid.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -69,14 +92,28 @@ namespace WindowsFormsApp3
             OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "Text Files|*.txt" };
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                store.LoadProducts(openFileDialog.FileName);
-                dgvProducts.DataSource = store.Products.ToList();
+                var parsedLines = salesFileValidator.LoadProductFileWithValidation(openFileDialog.FileName);
+
+                store.Products.Clear();
+                store.Products.AddRange(salesFileValidator.Products);
+
+                dgvProducts.CellFormatting -= DgvProducts_CellFormatting; // на всякий случай отписываем
+                dgvProducts.DataSource = null;
+
+                bool hasErrors = parsedLines.Any(p => !p.IsValid);
+                if (hasErrors)
+                {
+                    dgvProducts.DataSource = parsedLines;
+                    dgvProducts.CellFormatting += DgvProducts_CellFormatting;
+                }
+                else
+                {
+                    dgvProducts.DataSource = store.Products.ToList();
+                }
             }
         }
-
         private void загрузитьСписокПродажToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Кнопка 'Загрузить продажи' нажата");
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Filter = "Text Files|*.txt",
@@ -85,11 +122,27 @@ namespace WindowsFormsApp3
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                store.LoadSales(openFileDialog.FileName);
-                dgvSales.DataSource = null;  // Сброс данных
-                dgvSales.DataSource = store.Sales.ToList();  // Обновленный список продаж
+                var parsedLines = salesFileValidator.LoadSalesFileWithValidation(openFileDialog.FileName);
+
+                store.Sales.Clear();
+                store.Sales.AddRange(salesFileValidator.Sales);
+
+                dgvSales.CellFormatting -= DgvSales_CellFormatting;
+                dgvSales.DataSource = null;
+
+                bool hasErrors = parsedLines.Any(p => !p.IsValid);
+                if (hasErrors)
+                {
+                    dgvSales.DataSource = parsedLines;
+                    dgvSales.CellFormatting += DgvSales_CellFormatting;
+                }
+                else
+                {
+                    dgvSales.DataSource = store.Sales.ToList();
+                }
             }
         }
+
 
         private void показатьОстаткиНаСкладеToolStripMenuItem_Click(object sender, EventArgs e)
         {
